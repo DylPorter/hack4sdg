@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from llm import ai_review
 
 app = Flask(__name__)
 CORS(app) # Enable CORS
@@ -51,7 +52,8 @@ def get_rankings():
                 "average_material": round(avg_material, 2),
                 "average_disposal": round(avg_disposal, 2),
                 "weighted_score": round(weighted_score, 2),
-                "reviews": data["reviews"]
+                "reviews": data["reviews"],
+				"AI review": ai_review(company, round(avg_material, 2), round(avg_disposal, 2))
             })
 
     rankings.sort(key=lambda x: x["weighted_score"], reverse=True)
