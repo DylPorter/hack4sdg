@@ -1,141 +1,74 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <link
-      rel="stylesheet" href="main.css"
-    />
-  </head>
-  <body>
-    <section class="hero is-primary is-bold">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Data Entry Form</h1>
-        </div>
-      </div>
-    </section>
-    <form id="form" class="container m-4 pl-4" method="POST">
-      <div class="field">
-        <label class="label">Client Name</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Your Client Name"
-            name="Client Name"
-          />
-        </div>
-      </div>
+    <head>
+        <title>What's up</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
 
-      <!-- <div class="field">
-        <label class="label">Last Name</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Your Last Name"
-            name="Last Name"
-          />
-        </div>
-      </div> -->
+    <body>
+        <h1>AAAAAA HACKATHON STUFF</h1>
 
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control">
-          <input
-            class="input"
-            type="email"
-            placeholder="Your Email"
-            name="Email"
-          />
-        </div>
-      </div>
+        <p>welcome to HADAM's page</p>
 
-      <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
-          <input
-            class="input"
-            type="password"
-            placeholder="Your Password"
-            name="Password"
-          />
-        </div>
-      </div>
+        <form class="form">
+            <label>Email:</label><br>
+            <input type="email" name="email" placeholder="e.g. john.chan@email.com"><br><br>
 
-      <div class="field">
-        <label class="label">Date of Birth</label>
-        <div class="control">
-          <input
-            class="input"
-            type="date"
-            placeholder="Your Date of Birth"
-            name="DOB"
-          />
-        </div>
-      </div>
+            <label>Company:</label><br>
+            <input type="text" name="company" placeholder="e.g. Starbucks"><br><br>
 
-      <div class="field">
-        <label class="label">Gender</label>
-        <div class="control">
-          <label class="radio">
-            <input type="radio" name="Gender" value="male" /> Male
-          </label>
-          <label class="radio">
-            <input type="radio" name="Gender" value="female" /> Female
-          </label>
-        </div>
-      </div>
+            <p>Rating System (1 - Terrible, 5 - Excellent):</p>
+            <label>Material of Packaging:</label><br>
+            <div>
+                <input type="radio" name="material" value="1"> 1
+                <input type="radio" name="material" value="2"> 2
+                <input type="radio" name="material" value="3"> 3
+                <input type="radio" name="material" value="4"> 4
+                <input type="radio" name="material" value="5"> 5
+            </div><br>
 
-      <div class="field">
-        <label class="label">Agree to Terms</label>
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox" name="Agree To Terms" value="yes" /> I agree
-            to the terms and conditions
-          </label>
-        </div>
-      </div>
+            <label>Convenience of Disposal:</label><br>
+            <div>
+                <input type="radio" name="disposal" value="1"> 1
+                <input type="radio" name="disposal" value="2"> 2
+                <input type="radio" name="disposal" value="3"> 3
+                <input type="radio" name="disposal" value="4"> 4
+                <input type="radio" name="disposal" value="5"> 5
+            </div><br>
 
-      <div class="field">
-        <label class="label">Additional Information</label>
-        <div class="control">
-          <textarea
-            class="textarea"
-            placeholder="Any additional information"
-            name="Notes"
-          ></textarea>
-        </div>
-      </div>
+            <label>[OPTIONAL] Review:</label><br>
+            <input type="text" name="review" placeholder="Write a quick review"><br><br>
 
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-primary" type="submit" id="submit-button">
-            Sign Up
-          </button>
-        </div>
-        <div class="control">
-          <button class="button is-danger">Cancel</button>
-        </div>
-      </div>
-    </form>
-    <div
-      id="message"
-      style="
-        display: none;
-        margin: 20px;
-        font-weight: bold;
-        color: green;
-        padding: 8px;
-        background-color: beige;
-        border-radius: 4px;
-        border-color: aquamarine;
-      "
-    ></div>
+            <label>Agree to the Terms and Conditions</label><br>
+            <input type="checkbox" name="termsconditions" required><br><br>
 
-    <script src="main.js"></script>
+            <button type="submit">Submit</button>
+        </form>
 
-  </body>
+        <button onclick="window.location.href='ranking.html';">View Rankings</button>
+
+        <script>
+            const formEl = document.querySelector(".form");
+
+            formEl.addEventListener("submit", event => {
+                event.preventDefault();
+
+                const formData = new FormData(formEl);
+                const data = Object.fromEntries(formData);
+
+                fetch('http://localhost:8000/api/data', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(res => res.json())
+                .then(data => console.log(data))
+                .catch(error => console.log(error));
+            });
+        </script>
+
+    </body>
 </html>
-
-<!-- using the code from this video:
-    https://www.youtube.com/watch?v=5Ta8TrPsdN8 --!>
