@@ -10,15 +10,15 @@
 
         <p>Here are the rankings:</p>
 
-        <ul id="ranking-list">
+        <ol id="ranking-list">
         <!-- empty for now --!>
-        </ul>
+        </ol>
         
         <button onclick="window.location.href='index.html';">Add a review</button>
 
         <script>
             function fetchRankings() {
-                fetch("http://localhost:8000/api/rankings")
+                fetch("https://dylporter.pythonanywhere.com/api/rankings")
                     .then(res => {
                         if (!res.ok) {
                             throw new Error("Network response failed");
@@ -30,8 +30,7 @@
                         rankingList.innerHTML = "";
                         rankings.forEach(item => {
                             const li = document.createElement("li");
-                            li.textContent = `${item.company}: Avg Material ${item.average_material},
-                                Avg Disposal ${item.average_disposal}`;
+                            li.textContent = `${item.company}: Score: ${item.weighted_score} / 5 [Avg Material: ${item.average_material}, Avg Disposal: ${item.average_disposal}]`;
                             rankingList.appendChild(li);
                         });
                     })
