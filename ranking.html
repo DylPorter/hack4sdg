@@ -30,7 +30,7 @@
                         rankingList.innerHTML = "";
                         rankings.forEach(item => {
                             const li = document.createElement("li");
-                            li.textContent = `${item.company}: Score: ${item.weighted_score} / 5 [Avg Material: ${item.average_material}, Avg Disposal: ${item.average_disposal}], Review: ${item.ai_review}`;
+                            li.textContent = `${item.company}: Score: ${item.weighted_score} / 5 [Avg Material: ${item.average_material}, Avg Disposal: ${item.average_disposal}]`;
                             rankingList.appendChild(li);
                         });
                     })
