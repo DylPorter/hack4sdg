@@ -53,7 +53,7 @@ def get_rankings():
                 "average_disposal": round(avg_disposal, 2),
                 "weighted_score": round(weighted_score, 2),
                 "reviews": data["reviews"],
-				"AI review": ai_review(company, round(avg_material, 2), round(avg_disposal, 2))
+				"ai_review": ai_review(company, round(avg_material, 2), round(avg_disposal, 2), data["reviews"])
             })
 
     rankings.sort(key=lambda x: x["weighted_score"], reverse=True)
