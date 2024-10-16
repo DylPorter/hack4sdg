@@ -7,41 +7,42 @@
     </head>
 
     <body>
-        <h1>AAAAAA HACKATHON STUFF</h1>
-
-        <p>welcome to HADAM's page</p>
+        <h1>HADAM Prototype | Hack4SDG</h1>
 
         <form class="form">
-            <label>Email:</label><br>
+            <label>Your Email:</label>
             <input type="email" name="email" placeholder="e.g. john.chan@email.com"><br><br>
 
-            <label>Company:</label><br>
+            <label>Company Name:</label>
             <input type="text" name="company" placeholder="e.g. Starbucks"><br><br>
 
             <p>Rating System (1 - Terrible, 5 - Excellent):</p>
-            <label>Material of Packaging:</label><br>
-            <div>
-                <input type="radio" name="material" value="1"> 1
-                <input type="radio" name="material" value="2"> 2
-                <input type="radio" name="material" value="3"> 3
-                <input type="radio" name="material" value="4"> 4
-                <input type="radio" name="material" value="5"> 5
-            </div><br>
 
-            <label>Convenience of Disposal:</label><br>
-            <div>
-                <input type="radio" name="disposal" value="1"> 1
-                <input type="radio" name="disposal" value="2"> 2
-                <input type="radio" name="disposal" value="3"> 3
-                <input type="radio" name="disposal" value="4"> 4
-                <input type="radio" name="disposal" value="5"> 5
-            </div><br>
+            <label>Material of Packaging:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="material" value="1"> 1</label>
+                <label><input type="radio" name="material" value="2"> 2</label>
+                <label><input type="radio" name="material" value="3"> 3</label>
+                <label><input type="radio" name="material" value="4"> 4</label>
+                <label><input type="radio" name="material" value="5"> 5</label>
+            </div>
 
-            <label>[OPTIONAL] Review:</label><br>
+            <label>Convenience of Disposal:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="disposal" value="1"> 1</label>
+                <label><input type="radio" name="disposal" value="2"> 2</label>
+                <label><input type="radio" name="disposal" value="3"> 3</label>
+                <label><input type="radio" name="disposal" value="4"> 4</label>
+                <label><input type="radio" name="disposal" value="5"> 5</label>
+            </div>
+
+            <label>[OPTIONAL] Review:</label>
             <input type="text" name="review" placeholder="Write a quick review"><br><br>
 
-            <label>Agree to the Terms and Conditions</label><br>
-            <input type="checkbox" name="termsconditions" required><br><br>
+            <label>
+                <input type="checkbox" name="termsconditions" required>
+                Agree to the Terms and Conditions
+            </label>
 
             <button type="submit">Submit</button>
         </form>
